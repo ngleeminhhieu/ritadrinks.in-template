@@ -80,6 +80,10 @@ export default function SwiperModule() {
                 pagination: {
                     el: heroSliderEl.querySelector(".swiper-pagination"),
                     clickable: true
+                },
+                navigation: {
+                    nextEl: heroSliderEl.querySelector(".swiper-next"),
+                    prevEl: heroSliderEl.querySelector(".swiper-prev")
                 }
             })
         }

@@ -23,6 +23,64 @@ export default function HeaderModule() {
     });
     HandleHeader();
 
+    if (header) {
+        let lastScrollY = window.scrollY;
+        let megaOpen = false;
+
+        function HandleHeaderState() {
+            const scrollY = window.scrollY;
+            const scrollingDown = scrollY > lastScrollY;
+
+            header.classList.toggle("hd-transparent", scrollY <= 0 && !megaOpen && !header.classList.contains("default"));
+
+            if (scrollY <= 0) {
+                header.classList.remove("hd-top-hide");
+            } else if (scrollingDown) {
+                header.classList.add("hd-top-hide");
+            } else {
+                header.classList.remove("hd-top-hide");
+            }
+
+            lastScrollY = scrollY;
+        }
+
+        window.addEventListener("scroll", HandleHeaderState, { passive: true });
+        HandleHeaderState();
+
+        const megaItems = header.querySelectorAll(".menu-item.mega[data-mega]");
+        const megaContainer = header.querySelector(".hd-mega");
+        let megaCloseTimer = null;
+
+        function openMega(key) {
+            clearTimeout(megaCloseTimer);
+            megaOpen = true;
+            header.setAttribute("data-active-mega", key);
+            HandleHeaderState();
+        }
+
+        function scheduleCloseMega() {
+            clearTimeout(megaCloseTimer);
+            megaCloseTimer = setTimeout(() => {
+                if (megaContainer && megaContainer.matches(":hover")) return;
+                megaOpen = false;
+                header.removeAttribute("data-active-mega");
+                HandleHeaderState();
+            }, 120);
+        }
+
+        megaItems.forEach((item) => {
+            item.addEventListener("mouseenter", () => openMega(item.dataset.mega));
+            item.addEventListener("mouseleave", scheduleCloseMega);
+        });
+
+        if (megaContainer) {
+            megaContainer.addEventListener("mouseenter", () => {
+                clearTimeout(megaCloseTimer);
+            });
+            megaContainer.addEventListener("mouseleave", scheduleCloseMega);
+        }
+    }
+
     const hdCate = document.querySelector(".hdCateJS")
     if (hdCate) {
         const hdCateOpen = hdCate.querySelector(".hd-cate-open")

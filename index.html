@@ -49,25 +49,14 @@
     </div>
     <div class="hd-bar">
         <div class="hd-main container">
-          <div class="hd-logo"><a class="custom-logo-link" href="./index.html"><img
-                src="./assets/images/logo-noslogan.png" alt="RITA" loading="lazy" /></a></div>
+          <div class="hd-logo"><a class="custom-logo-link" href="./index.html" aria-label="RITA"><span class="hd-logo__mark"></span></a></div>
           <div class="hd-nav">
             <div class="menu-nav">
               <ul class="menu-list">
                 <li class="menu-item current-menu-item"><a class="menu-link active" href="./index.html">HOME</a></li>
-                <li class="menu-item dropdown"><a class="menu-link" href="./about.html">ABOUT US</a>
-                  <ul class="menu-list">
-                    <li class="menu-item"><a href="#">OUR STORY<i class="fas fa-chevron-right"></i></a></li>
-                    <li class="menu-item"><a href="#">FACTORY &amp; CERTIFICATIONS<i class="fas fa-chevron-right"></i></a></li>
-                  </ul>
-                </li>
-                <li class="menu-item mega"><a class="menu-link" href="./products.html">PRODUCTS<i class="fas fa-chevron-down"></i></a></li>
-                <li class="menu-item dropdown"><a class="menu-link" href="#">SERVICES</a>
-                  <ul class="menu-list">
-                    <li class="menu-item"><a href="#">OEM / ODM<i class="fas fa-chevron-right"></i></a></li>
-                    <li class="menu-item"><a href="#">PRIVATE LABEL<i class="fas fa-chevron-right"></i></a></li>
-                  </ul>
-                </li>
+                <li class="menu-item mega" data-mega="about"><a class="menu-link" href="./about.html">ABOUT US<i class="fas fa-chevron-down"></i></a></li>
+                <li class="menu-item mega" data-mega="products"><a class="menu-link" href="./products.html">PRODUCTS<i class="fas fa-chevron-down"></i></a></li>
+                <li class="menu-item mega" data-mega="services"><a class="menu-link" href="#">SERVICES<i class="fas fa-chevron-down"></i></a></li>
                 <li class="menu-item"><a class="menu-link" href="./blog.html">BLOG</a></li>
                 <li class="menu-item"><a class="menu-link" href="./contact.html">CONTACT</a></li>
               </ul>
@@ -101,19 +90,70 @@
         </div>
         <div class="hd-mega">
           <div class="hd-mega__wrap">
-            <div class="hd-mega__inner container">
-              <div class="hd-mega__menu">
-                <ul class="hd-mega__list">
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">FRUIT JUICE</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">ALOE VERA</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">COCONUT WATER</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">MILK DRINKS</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">SOFT DRINKS</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">COFFEE DRINKS</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">SPARKLING DRINKS</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">ENERGY DRINKS</a></li>
-                  <li class="hd-mega__item"><a class="hd-mega__link" href="#">TEA DRINKS</a></li>
-                </ul>
+            <div class="hd-mega__inner">
+              <div class="hd-mega__panel" data-mega-panel="about">
+                <div class="hd-mega__intro">
+                  <div class="hd-mega__thumb"><img src="./assets/images/about-us.png" alt="About Us" loading="lazy" /></div>
+                  <div class="hd-mega__intro-foot">
+                    <div class="hd-mega__intro-text">
+                      <h3 class="hd-mega__intro-title">About Us</h3>
+                      <p class="hd-mega__intro-desc">RITA has been crafting and exporting premium beverages from Vietnam for over 20 years. Explore our story, certifications and milestones.</p>
+                    </div>
+                    <div class="btn-box"><a class="btn pri" href="./about.html"><span class="txt"><span class="txt-inner">Learn More</span></span></a></div>
+                  </div>
+                </div>
+                <div class="hd-mega__menu">
+                  <ul class="hd-mega__list">
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Our Story</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Our Certificates</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Our Activities</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Our History</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Our Brands</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hd-mega__panel" data-mega-panel="products">
+                <div class="hd-mega__intro">
+                  <div class="hd-mega__thumb"><img src="./assets/images/supermarket.png" alt="Products" loading="lazy" /></div>
+                  <div class="hd-mega__intro-foot">
+                    <div class="hd-mega__intro-text">
+                      <h3 class="hd-mega__intro-title">Products</h3>
+                      <p class="hd-mega__intro-desc">From tropical juices to functional drinks, worldwide. We craft, bottle and deliver every product with care, consistency and industry-leading quality standards.</p>
+                    </div>
+                    <div class="btn-box"><a class="btn pri" href="./products.html"><span class="txt"><span class="txt-inner">Learn More</span></span></a></div>
+                  </div>
+                </div>
+                <div class="hd-mega__menu">
+                  <ul class="hd-mega__list">
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Fruit Juice</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Aloe Vera</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Coconut Water</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Milk Drinks</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Soft Drinks</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Coffee Drinks</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Sparkling Drinks</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Energy Drinks</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">Tea Drinks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hd-mega__panel" data-mega-panel="services">
+                <div class="hd-mega__intro">
+                  <div class="hd-mega__thumb"><img src="./assets/images/meeting.png" alt="Services" loading="lazy" /></div>
+                  <div class="hd-mega__intro-foot">
+                    <div class="hd-mega__intro-text">
+                      <h3 class="hd-mega__intro-title">Services</h3>
+                      <p class="hd-mega__intro-desc">OEM/ODM manufacturing tailored to your brand. From formulation and recipe development to private label production and packaging, we handle it all.</p>
+                    </div>
+                    <div class="btn-box"><a class="btn pri" href="#"><span class="txt"><span class="txt-inner">Learn More</span></span></a></div>
+                  </div>
+                </div>
+                <div class="hd-mega__menu">
+                  <ul class="hd-mega__list">
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">OEM Service</a></li>
+                    <li class="hd-mega__item"><a class="hd-mega__link" href="#">ODM Service</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -128,10 +168,12 @@
             <div class="menu-nav">
               <ul class="menu-list">
                 <li class="menu-item"><a class="menu-link" href="./index.html">HOME</a></li>
-                <li class="menu-item"><a class="menu-link" href="./about.html">ABOUT US</a></li>
+                <li class="menu-item has-sub"><a class="menu-link mobileSubJS" href="./about.html"
+                    data-sub="about">ABOUT US<i class="fas fa-chevron-right"></i></a></li>
                 <li class="menu-item has-sub"><a class="menu-link mobileSubJS" href="./products.html"
                     data-sub="products">PRODUCTS<i class="fas fa-chevron-right"></i></a></li>
-                <li class="menu-item"><a class="menu-link" href="#">SERVICES</a></li>
+                <li class="menu-item has-sub"><a class="menu-link mobileSubJS" href="#"
+                    data-sub="services">SERVICES<i class="fas fa-chevron-right"></i></a></li>
                 <li class="menu-item"><a class="menu-link" href="./blog.html">BLOG</a></li>
                 <li class="menu-item"><a class="menu-link" href="./contact.html">CONTACT</a></li>
               </ul>
@@ -146,6 +188,23 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="mobile-sub" data-sub-panel="about">
+        <div class="mobile-sub__intro">
+          <div class="mobile-sub__head mobileBackJS"><i class="fas fa-chevron-left"></i><span
+              class="mobile-sub__title t-32">ABOUT US</span></div>
+          <p class="mobile-sub__desc">RITA has been crafting and exporting premium beverages from Vietnam for over
+            20 years — explore our story, certifications and milestones.</p>
+          <div class="btn-box"><a class="btn third" href="./about.html"><span class="txt"><span
+                  class="txt-inner">LEARN MORE</span></span></a></div>
+        </div>
+        <ul class="mobile-sub__list">
+          <li><a href="#">OUR STORY</a></li>
+          <li><a href="#">OUR CERTIFICATES</a></li>
+          <li><a href="#">OUR ACTIVITIES</a></li>
+          <li><a href="#">OUR HISTORY</a></li>
+          <li><a href="#">OUR BRANDS</a></li>
+        </ul>
       </div>
       <div class="mobile-sub" data-sub-panel="products">
         <div class="mobile-sub__intro">
@@ -166,6 +225,18 @@
           <li><a href="#">SPARKLING DRINKS</a></li>
           <li><a href="#">ENERGY DRINKS</a></li>
           <li><a href="#">TEA DRINKS</a></li>
+        </ul>
+      </div>
+      <div class="mobile-sub" data-sub-panel="services">
+        <div class="mobile-sub__intro">
+          <div class="mobile-sub__head mobileBackJS"><i class="fas fa-chevron-left"></i><span
+              class="mobile-sub__title t-32">SERVICES</span></div>
+          <p class="mobile-sub__desc">Full-service OEM/ODM beverage manufacturing — from formulation to private
+            label production, tailored to your brand.</p>
+        </div>
+        <ul class="mobile-sub__list">
+          <li><a href="#">OEM SERVICE</a></li>
+          <li><a href="#">ODM SERVICE</a></li>
         </ul>
       </div>
     </div>
@@ -190,6 +261,10 @@
         </div>
       </div>
       <div class="swiper-pagination"></div>
+      <div class="swiper-control">
+        <div class="swiper-control-btn swiper-prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="swiper-control-btn swiper-next"><i class="fas fa-chevron-right"></i></div>
+      </div>
     </section>
   </main>
 
