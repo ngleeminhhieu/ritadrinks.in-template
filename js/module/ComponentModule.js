@@ -526,4 +526,55 @@ checkedLimits.forEach((group) => {
       sortDropdown.classList.remove("active");
     });
   }
+
+  // Video intro: preload MP4 when section approaches viewport, activate on click
+  document.querySelectorAll(".video-intro__stage").forEach(stage => {
+    const src = stage.dataset.videoSrc;
+    if (!src) return;
+    const poster = stage.querySelector(".video-intro__poster");
+    const playBtn = stage.querySelector(".video-intro__play");
+    let video = null;
+
+    const preload = () => {
+      if (video) return;
+      video = document.createElement("video");
+      video.src = src;
+      video.playsInline = true;
+      video.setAttribute("preload", "auto");
+      stage.insertBefore(video, stage.firstChild);
+      video.onpause = () => stage.classList.remove("is-playing");
+      video.onplay = () => stage.classList.add("is-playing");
+      video.onended = () => stage.classList.remove("is-playing");
+    };
+
+    const activate = (e) => {
+      if (e) e.stopPropagation();
+      if (e && e.target.closest(".video-intro__actions")) return;
+      preload();
+      if (poster) poster.remove();
+      stage.classList.add("is-playing");
+      video.play().catch(() => { });
+    };
+
+    const toggle = (e) => {
+      if (e && e.target.closest(".video-intro__actions")) return;
+      if (!video || poster) { activate(e); return; }
+      if (video.paused) video.play(); else video.pause();
+    };
+
+    if (playBtn) playBtn.addEventListener("click", activate);
+    stage.addEventListener("click", toggle);
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            preload();
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: "300px" });
+      io.observe(stage);
+    }
+  });
 }

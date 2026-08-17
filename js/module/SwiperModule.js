@@ -89,6 +89,41 @@ export default function SwiperModule() {
         }
     }
 
+    const capEl = document.querySelector(".cap__slider .swiper")
+    if (capEl) {
+        new Swiper(capEl, {
+            speed: 800,
+            slidesPerView: 4,
+            spaceBetween: 24,
+            grid: {
+                rows: 2,
+                fill: "row"
+            },
+            grabCursor: true,
+            navigation: {
+                nextEl: ".capNextJS",
+                prevEl: ".capPrevJS"
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 12,
+                    grid: { rows: 2, fill: "row" }
+                },
+                600: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    grid: { rows: 2, fill: "row" }
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 24,
+                    grid: { rows: 2, fill: "row" }
+                }
+            }
+        })
+    }
+
     const blogSliderEl = document.querySelector(".home-blog__slider .swiper")
     if (blogSliderEl) {
         new Swiper(blogSliderEl, {

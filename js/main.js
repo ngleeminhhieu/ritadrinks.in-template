@@ -71,6 +71,11 @@ window.addEventListener("DOMContentLoaded", () => {
          initModule: () => import("./module/MobileSubModule.js"),
       },
       {
+         selector: ".range__row",
+         libraries: [],
+         initModule: () => import("./module/RangeModule.js"),
+      },
+      {
          selector: ".srchOpenJS",
          libraries: [],
          initModule: () => import("./module/HeaderSearchModule.js"),
