@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+pixel.html
+*.log
+.vscode/
+.idea/
+node_modules/
+_preview-*.html
