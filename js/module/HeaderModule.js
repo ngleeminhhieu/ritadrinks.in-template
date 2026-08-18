@@ -27,18 +27,24 @@ export default function HeaderModule() {
         let lastScrollY = window.scrollY;
         let megaOpen = false;
 
-        function HandleHeaderState() {
-            const scrollY = window.scrollY;
-            const scrollingDown = scrollY > lastScrollY;
+        function updateTransparent() {
+            header.classList.toggle("hd-transparent", window.scrollY <= 0 && !megaOpen && !header.classList.contains("default"));
+        }
 
-            header.classList.toggle("hd-transparent", scrollY <= 0 && !megaOpen && !header.classList.contains("default"));
+        function HandleHeaderState() {
+            if (document.body.style.position === "fixed") return;
+
+            const scrollY = window.scrollY;
+            const scrollingUp = scrollY < lastScrollY;
+
+            updateTransparent();
 
             if (scrollY <= 0) {
                 header.classList.remove("hd-top-hide");
-            } else if (scrollingDown) {
-                header.classList.add("hd-top-hide");
-            } else {
+            } else if (scrollingUp) {
                 header.classList.remove("hd-top-hide");
+            } else {
+                header.classList.add("hd-top-hide");
             }
 
             lastScrollY = scrollY;
@@ -55,7 +61,7 @@ export default function HeaderModule() {
             clearTimeout(megaCloseTimer);
             megaOpen = true;
             header.setAttribute("data-active-mega", key);
-            HandleHeaderState();
+            updateTransparent();
         }
 
         function scheduleCloseMega() {
@@ -64,7 +70,7 @@ export default function HeaderModule() {
                 if (megaContainer && megaContainer.matches(":hover")) return;
                 megaOpen = false;
                 header.removeAttribute("data-active-mega");
-                HandleHeaderState();
+                updateTransparent();
             }, 120);
         }
 

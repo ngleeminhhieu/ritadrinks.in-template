@@ -87,6 +87,11 @@ window.addEventListener("DOMContentLoaded", () => {
          ],
          initModule: () => import("./module/Select2Module.js"),
       },
+      {
+         selector: "#shopSidebar",
+         libraries: [],
+         initModule: () => import("./module/ShopFilterModule.js"),
+      },
    ];
 
    const scanDOMAndLoad = () => {

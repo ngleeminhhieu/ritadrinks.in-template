@@ -291,6 +291,34 @@ export default function SwiperModule() {
         actMq.addEventListener("change", buildAct);
     }
 
+    const newsEl = document.querySelector(".news__slider .swiper")
+    if (newsEl) {
+        new Swiper(newsEl, {
+            speed: 800,
+            spaceBetween: 24,
+            slidesPerView: 3,
+            grabCursor: true,
+            navigation: {
+                nextEl: ".newsNextJS",
+                prevEl: ".newsPrevJS"
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.15,
+                    spaceBetween: 16
+                },
+                600: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 24
+                }
+            }
+        })
+    }
+
     const relatedProductsEl = document.querySelector(".related-products__slider .swiper")
     if (relatedProductsEl) {
         new Swiper(relatedProductsEl, {
