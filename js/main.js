@@ -92,6 +92,33 @@ window.addEventListener("DOMContentLoaded", () => {
          libraries: [],
          initModule: () => import("./module/ShopFilterModule.js"),
       },
+      {
+         selector: ".stickyCtaJS",
+         libraries: [],
+         initModule: () => import("./module/StickyCtaModule.js"),
+      },
+      {
+         selector: "#articleToc",
+         libraries: [],
+         initModule: () => import("./module/TocModule.js"),
+      },
+      {
+         selector: "#histTimeline",
+         libraries: [],
+         initModule: () => import("./module/HistoryModule.js"),
+      },
+      {
+         selector: "#leaderPanel",
+         libraries: [],
+         initModule: () => import("./module/LeaderPanelModule.js"),
+      },
+      {
+         selector: "[data-fancybox]",
+         libraries: [
+            "./assets/library/fancybox/fancybox.umd.js",
+         ],
+         initModule: () => import("./module/VideoModule.js"),
+      },
    ];
 
    const scanDOMAndLoad = () => {

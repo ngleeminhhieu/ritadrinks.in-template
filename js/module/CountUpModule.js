@@ -5,25 +5,29 @@ export default function CountUpModule() {
    const format = (n) => String(n);
    const unitOf = (el) =>
       el.parentElement ? el.parentElement.querySelector(".stat__unit") : null;
+   const labelOf = (el) => {
+      const stat = el.closest(".stat");
+      return stat ? stat.querySelector(".stat__label") : null;
+   };
 
-   const hideUnit = (unit) => {
-      if (!unit) return;
-      unit.style.display = "inline-block";
-      unit.style.opacity = "0";
-      unit.style.transform = "translateY(0.35em)";
-      unit.style.transition =
+   const hideFade = (node) => {
+      if (!node) return;
+      node.style.opacity = "0";
+      node.style.transform = "translateY(0.35em)";
+      node.style.transition =
          "opacity .5s ease, transform .5s cubic-bezier(.2,1.1,.4,1)";
    };
-   const showUnit = (unit) => {
-      if (!unit) return;
-      unit.style.opacity = "1";
-      unit.style.transform = "translateY(0)";
+   const showFade = (node) => {
+      if (!node) return;
+      node.style.opacity = "1";
+      node.style.transform = "translateY(0)";
    };
 
    const animate = (el) => {
       const target = Number(el.dataset.count) || 0;
       const duration = Number(el.dataset.countDur) || 1400;
       const unit = unitOf(el);
+      const label = labelOf(el);
 
       const start = performance.now();
       const easeOut = (t) => 1 - Math.pow(1 - t, 3);
@@ -34,7 +38,8 @@ export default function CountUpModule() {
          if (t < 1) {
             requestAnimationFrame(tick);
          } else {
-            showUnit(unit); // đếm xong -> hiện suffix
+            showFade(label); // đếm xong -> hiện label trước
+            setTimeout(() => showFade(unit), 150); // rồi mới tới suffix
          }
       };
       requestAnimationFrame(tick);
@@ -54,7 +59,8 @@ export default function CountUpModule() {
 
    nodes.forEach((el) => {
       el.textContent = "0";
-      hideUnit(unitOf(el)); // ẩn suffix trước, đếm xong mới hiện
+      hideFade(unitOf(el));
+      hideFade(labelOf(el)); // ẩn cả label lẫn suffix, tránh giật layout khi số đang đổi độ rộng
       io.observe(el);
    });
 }

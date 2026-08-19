@@ -169,6 +169,10 @@ export default function SwiperModule() {
             slidesPerView: "auto",
             spaceBetween: 16,
             grabCursor: true,
+            navigation: {
+                nextEl: ".blogFeaturedNextJS",
+                prevEl: ".blogFeaturedPrevJS"
+            },
             breakpoints: {
                 0: {
                     spaceBetween: 8
@@ -208,7 +212,8 @@ export default function SwiperModule() {
         new Swiper(processEl, {
             speed: 700,
             loop: true,
-            slidesPerView: 1,
+            centeredSlides: true,
+            slidesPerView: 3.3,
             spaceBetween: 0,
             grabCursor: true,
             autoplay: {
@@ -219,37 +224,99 @@ export default function SwiperModule() {
             pagination: {
                 el: processEl.parentElement.querySelector(".process__pagination"),
                 clickable: true
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.15
+                },
+                600: {
+                    slidesPerView: 1.6
+                },
+                1200: {
+                    slidesPerView: 3.3
+                }
+            }
+        })
+    }
+
+    const expoEl = document.querySelector(".expo__slider .swiper")
+    if (expoEl) {
+        new Swiper(expoEl, {
+            speed: 700,
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 1.6,
+            spaceBetween: 0,
+            grabCursor: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.05
+                },
+                600: {
+                    slidesPerView: 1.15
+                },
+                1200: {
+                    slidesPerView: 1.6
+                }
             }
         })
     }
 
     const provenEl = document.querySelector(".proven-gallery .swiper")
     if (provenEl) {
+        const provenRoot = provenEl.closest(".proven-gallery")
+
+        // centeredSlides nên slide active luôn nằm giữa: chỉ cần set bề rộng, không đo vị trí lúc kéo
+        const sizeProvenOverlay = (swiper) => {
+            if (!provenRoot) return
+            const slideWidth = swiper.slidesSizesGrid && swiper.slidesSizesGrid[0]
+            if (!slideWidth) return
+            provenRoot.style.setProperty("--slide-w", `${slideWidth}px`)
+        }
+
         new Swiper(provenEl, {
             speed: 700,
-            slidesPerView: 3,
+            slidesPerView: 1.6,
             spaceBetween: 16,
             grabCursor: true,
-            loop: true,
             centeredSlides: true,
+            loop: true,
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
             },
+            navigation: {
+                nextEl: ".provenNextJS",
+                prevEl: ".provenPrevJS"
+            },
+            pagination: {
+                el: ".proven-gallery__count",
+                type: "fraction"
+            },
             breakpoints: {
                 0: {
-                    slidesPerView: 1.15,
+                    slidesPerView: 1.1,
                     spaceBetween: 10
                 },
                 600: {
-                    slidesPerView: 2,
+                    slidesPerView: 1.3,
                     spaceBetween: 12
                 },
                 1200: {
-                    slidesPerView: 3,
+                    slidesPerView: 1.6,
                     spaceBetween: 16
                 }
+            },
+            on: {
+                init: sizeProvenOverlay,
+                resize: sizeProvenOverlay,
+                breakpoint: sizeProvenOverlay
             }
         })
     }
@@ -334,10 +401,10 @@ export default function SwiperModule() {
             },
             breakpoints: {
                 0: {
-                    slidesPerView: 1.3
+                    slidesPerView: 2
                 },
                 600: {
-                    slidesPerView: 2.3
+                    slidesPerView: 3
                 },
                 1200: {
                     slidesPerView: 4
