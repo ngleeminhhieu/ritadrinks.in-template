@@ -527,6 +527,39 @@ checkedLimits.forEach((group) => {
     });
   }
 
+  // Certificate list: pagination "see more". Ẩn từ item thứ (page-size) trở đi.
+  // Item ẩn cũng gỡ data-fancybox để không lọt vào group của Fancybox.
+  document.querySelectorAll(".cert-list__grid").forEach((grid) => {
+    const pageSize = parseInt(grid.dataset.pageSize, 10) || 8;
+    const items = Array.from(grid.querySelectorAll(".cert-card"));
+    if (items.length <= pageSize) return;
+    const btn = grid.closest("section").querySelector(".certLoadMoreJS");
+
+    const fbAttr = "certificates";
+    const fbStore = new WeakMap();
+    items.forEach((it) => fbStore.set(it, it.getAttribute("data-fancybox") || fbAttr));
+
+    const applyState = (visibleCount) => {
+      items.forEach((item, idx) => {
+        const visible = idx < visibleCount;
+        item.classList.toggle("is-hidden", !visible);
+        if (visible) item.setAttribute("data-fancybox", fbStore.get(item));
+        else item.removeAttribute("data-fancybox");
+      });
+      if (btn) btn.style.display = visibleCount >= items.length ? "none" : "";
+    };
+
+    let visible = pageSize;
+    applyState(visible);
+
+    if (btn) {
+      btn.addEventListener("click", () => {
+        visible = Math.min(visible + pageSize, items.length);
+        applyState(visible);
+      });
+    }
+  });
+
   // Video intro: preload MP4 when section approaches viewport, activate on click
   document.querySelectorAll(".video-intro__stage").forEach(stage => {
     const src = stage.dataset.videoSrc;
