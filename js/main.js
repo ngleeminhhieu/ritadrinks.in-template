@@ -103,6 +103,23 @@ window.addEventListener("DOMContentLoaded", () => {
          initModule: () => import("./module/TocModule.js"),
       },
       {
+         selector: "#mileTimeline",
+         libraries: [],
+         initModule: () => import("./module/MilestoneModule.js"),
+      },
+      {
+         selector: ".flow",
+         libraries: [],
+         initModule: () => import("./module/FlowModule.js"),
+      },
+      {
+         selector: "#brandPopup",
+         libraries: [
+            "./assets/library/swiper/swiper-bundle.min.js",
+         ],
+         initModule: () => import("./module/BrandPopupModule.js"),
+      },
+      {
          selector: "#histTimeline",
          libraries: [],
          initModule: () => import("./module/HistoryModule.js"),
