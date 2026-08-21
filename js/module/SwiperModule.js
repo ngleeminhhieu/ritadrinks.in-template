@@ -509,6 +509,48 @@ export default function SwiperModule() {
         syncWhy(whyMq)
     }
 
+    const labelEl = document.querySelector(".label__slider .swiper")
+    if (labelEl) {
+        let labelSwiper = null
+        const labelMq = window.matchMedia("(max-width: 1200px)")
+        const buildLabel = () => {
+            if (labelSwiper) return
+            labelSwiper = new Swiper(labelEl, {
+                slidesPerView: 1,
+                spaceBetween: 16,
+                loop: true,
+                grabCursor: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 24
+                    }
+                }
+            })
+        }
+        const destroyLabel = () => {
+            if (labelSwiper) {
+                labelSwiper.destroy(true, true)
+                labelSwiper = null
+            }
+        }
+        const syncLabel = (e) => {
+            if (e.matches) buildLabel()
+            else destroyLabel()
+        }
+        labelMq.addEventListener("change", syncLabel)
+        syncLabel(labelMq)
+    }
+
     const exhiMap = document.querySelector(".exhi__map")
     if (exhiMap) {
         const exhiIO = new IntersectionObserver((entries, obs) => {

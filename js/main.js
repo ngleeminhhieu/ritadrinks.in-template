@@ -103,6 +103,18 @@ window.addEventListener("DOMContentLoaded", () => {
          initModule: () => import("./module/TocModule.js"),
       },
       {
+         selector: "#pkgFormats",
+         libraries: [],
+         initModule: () => import("./module/PkgModule.js"),
+      },
+      {
+         selector: ".packaging",
+         libraries: [
+            "./assets/library/splide/splide.min.js",
+         ],
+         initModule: () => import("./module/PackagingModule.js"),
+      },
+      {
          selector: "#mileTimeline",
          libraries: [],
          initModule: () => import("./module/MilestoneModule.js"),
