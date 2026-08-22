@@ -104,15 +104,11 @@ window.addEventListener("DOMContentLoaded", () => {
       },
       {
          selector: "#pkgFormats",
-         libraries: [],
-         initModule: () => import("./module/PkgModule.js"),
-      },
-      {
-         selector: ".packaging",
          libraries: [
-            "./assets/library/splide/splide.min.js",
+            "./assets/library/swiper/swiper-bundle.min.js",
+            "./assets/library/fancybox/fancybox.umd.js",
          ],
-         initModule: () => import("./module/PackagingModule.js"),
+         initModule: () => import("./module/PkgModule.js"),
       },
       {
          selector: "#mileTimeline",
